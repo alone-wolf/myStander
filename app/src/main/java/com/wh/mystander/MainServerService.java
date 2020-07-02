@@ -185,14 +185,15 @@ public class MainServerService extends Service {
         };
     }
 
-    void runTest(){
+    void runTest() {
         new Thread() {
             @Override
             public void run() {
                 try {
-                    Log.d(TAG, "run: ");
                     sleep(1000);
-                    Utils.runNotifyTest(URL + "/" + AppConfig.notifyRoute + "?device=本机&title=myStander&notify=恭喜你,myStander启动成功!");
+                    String url = URL + "/" + AppConfig.notifyRoute + "?device=本机&title=myStander&notify=恭喜你,myStander启动成功!";
+                    Log.d(TAG, "run: " + url);
+                    Utils.runNotifyTest(url);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }

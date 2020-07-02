@@ -1,6 +1,7 @@
 package com.wh.mystander;
 
 import android.content.IntentFilter;
+import android.util.Log;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -10,8 +11,10 @@ import java.util.Locale;
 
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
+import okhttp3.Response;
 
 public class Utils {
+    private static String TAG = "WH_"+Utils.class.getSimpleName();
     public static void runNotifyTest(String url) {
         sendHttpGetRequest(url);
     }
@@ -22,9 +25,13 @@ public class Utils {
                 .build();
         OkHttpClient client = new OkHttpClient();
         try {
-            client.newCall(request).execute();
+            Response response = client.newCall(request).execute();
+            Log.d(TAG, "sendHttpGetRequest: "+response.body().string());
+            response.body().close();
         } catch (IOException e) {
-            e.printStackTrace();
+            Log.e(TAG, "sendHttpGetRequest: error occurred");
+            Log.e(TAG, "sendHttpGetRequest: "+e.getMessage());
+//            e.printStackTrace();
         }
     }
 
