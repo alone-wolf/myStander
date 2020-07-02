@@ -112,9 +112,9 @@ public class MainServerService extends Service {
     }
 
     NotificationCompat.Builder genNotifyNotification(Bundle notify) {
-        String DEVICE = notify.getString(NotifyController.INTENT_BUNDLE_EXTRA_NAME_DEVICE, "default device");
-        String TITLE = notify.getString(NotifyController.INTENT_BUNDLE_EXTRA_NAME_TITLE, "default title");
-        String NOTIFY = notify.getString(NotifyController.INTENT_BUNDLE_EXTRA_NAME_NOTIFY, "blank notify");
+        String DEVICE = notify.getString(Controller.INTENT_BUNDLE_EXTRA_NAME_DEVICE, "default device");
+        String TITLE = notify.getString(Controller.INTENT_BUNDLE_EXTRA_NAME_TITLE, "default title");
+        String NOTIFY = notify.getString(Controller.INTENT_BUNDLE_EXTRA_NAME_NOTIFY, "blank notify");
 
         NotificationCompat.InboxStyle inboxStyle = new NotificationCompat.InboxStyle();
         inboxStyle.setBigContentTitle(TITLE);
@@ -158,8 +158,8 @@ public class MainServerService extends Service {
             public void onReceive(Context context, Intent intent) {
                 String ACTION = intent.getAction() + "";
                 switch (ACTION) {
-                    case NotifyController.ACTION_FROM_NOTIFY_CONTROLLER: {
-                        Bundle notify = intent.getBundleExtra(NotifyController.INTENT_BUNDLE_EXTRA_NAME);
+                    case Controller.ACTION_FROM_NOTIFY_CONTROLLER: {
+                        Bundle notify = intent.getBundleExtra(Controller.INTENT_BUNDLE_EXTRA_NAME);
                         if (notify == null) {
                             return;
                         }

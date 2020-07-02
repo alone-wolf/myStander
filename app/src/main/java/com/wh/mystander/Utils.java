@@ -1,6 +1,5 @@
 package com.wh.mystander;
 
-import android.content.BroadcastReceiver;
 import android.content.IntentFilter;
 
 import java.io.IOException;
@@ -53,7 +52,7 @@ public class Utils {
 
     public static IntentFilter genBroadcastReceiverIntentFilter(){
         IntentFilter intentFilter = new IntentFilter();
-        intentFilter.addAction(NotifyController.ACTION_FROM_NOTIFY_CONTROLLER);
+        intentFilter.addAction(Controller.ACTION_FROM_NOTIFY_CONTROLLER);
         intentFilter.addAction(MainServerService.ACTION_BROADCAST_STOP_SERVICE);
         intentFilter.addAction(MainServerService.ACTION_BROADCAST_REMOVE_NOTIFICATIONS);
         return intentFilter;
